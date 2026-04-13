@@ -39,13 +39,24 @@
 - LLM 工作流程（概率预测本质）
 - Context Window、Temperature 机制
 - Streaming 流式输出实现（Python + Go）
-- 成本计算（tiktoken）
+- 主流模型选型（GPT-4o/GPT-4o-mini/Claude/Kimi/DeepSeek）
+
+**主流模型对比（2025年）：**
+
+| 模型 | Context Window | 输入价格 | 输出价格 | 特点 |
+|------|---------------|---------|---------|------|
+| GPT-4o-mini | 128K | $0.15/1M | $0.60/1M | 性价比之王 |
+| GPT-4o | 128K | $2.50/1M | $10/1M | 通用强 |
+| Claude 3.5 Sonnet | 200K | $3/1M | $15/1M | 长上下文 |
+| Kimi | 128K/1M | ¥0.5/1K | ¥2/1K | 超长上下文 |
+| DeepSeek-V3 | 128K | ¥1/1M | ¥2/1M | 开源高性价比 |
 
 **检验清单：**
 - [x] 能口算：1000字中文 ≈ 1333 Token
-- [x] 能回答：GPT-3.5-turbo 的 Context Window（16K）
+- [x] 能回答：GPT-4o 的 Context Window（128K）
 - [x] 能解释：Temperature=0.7 vs 1.0 的区别
 - [x] 能实现：带 Streaming 的 LLM 调用
+- [x] 能根据任务选择合适的模型
 
 ---
 
@@ -67,6 +78,7 @@ ai-agent-learning/
 ├── .claude.md                             # 项目规则
 ├── AI工程师_夯实基础式学习计划_12周.md     # 详细学习计划
 ├── AI工程师_Agent_MCP学习计划_8周.md       # 快速学习路径
+├── requirements.txt                       # Python 依赖
 ├── learning-progress/
 │   ├── README.md                          # 进度追踪总览
 │   ├── week01-学习笔记.md                 # Week 1 详细笔记
@@ -97,3 +109,4 @@ ai-agent-learning/
 ---
 
 *学习开始日期：2026-04-01*
+*最后更新：2026-04-13*
