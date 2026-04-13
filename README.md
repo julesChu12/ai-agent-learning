@@ -39,21 +39,40 @@
 - LLM 工作流程（概率预测本质）
 - Context Window、Temperature 机制
 - Streaming 流式输出实现（Python + Go）
-- 主流模型选型（GPT-4o/GPT-4o-mini/Claude/Kimi/DeepSeek）
+- 主流模型选型（GPT-4.5/4o、Claude Opus 4、Gemini 3.1 Pro等）
 
-**主流模型对比（2025年）：**
+**主流模型对比（2026年）：**
 
 | 模型 | Context Window | 输入价格 | 输出价格 | 特点 |
 |------|---------------|---------|---------|------|
-| GPT-4o-mini | 128K | $0.15/1M | $0.60/1M | 性价比之王 |
-| GPT-4o | 128K | $2.50/1M | $10/1M | 通用强 |
-| Claude 3.5 Sonnet | 200K | $3/1M | $15/1M | 长上下文 |
-| Kimi | 128K/1M | ¥0.5/1K | ¥2/1K | 超长上下文 |
+| GPT-4.5 | 128K | $75/1M | $150/1M | 最强通用 |
+| GPT-4o | 128K | $2.50/1M | $10/1M | 性价比高 |
+| GPT-4o-mini | 128K | $0.15/1M | $0.60/1M | 极致性价比 |
+| Claude Opus 4 | 200K | $15/1M | $75/1M | 最强推理 |
+| Claude Sonnet 4 | 200K | $3/1M | $15/1M | 平衡强 |
+| Claude Haiku 4 | 200K | $0.25/1M | $1.25/1M | 轻量快速 |
+| Gemini 3.1 Pro | 2M | $1.25/1M | $5/1M | 超长上下文 |
+| Gemini 2.0 Flash | 1M | 免费 | 免费 | 高速响应 |
+| Kimi | 128K/1M | ¥0.5/1K | ¥2/1K | 中文强 |
 | DeepSeek-V3 | 128K | ¥1/1M | ¥2/1M | 开源高性价比 |
+| Codex 5-4 | 128K | $15/1M | $60/1M | 编程专用 |
+
+**选型建议：**
+
+| 场景 | 推荐模型 | 原因 |
+|------|---------|------|
+| 开发测试 | GPT-4o-mini / Claude Haiku 4 | 成本极低 |
+| 简单对话 | GPT-4o-mini | 性价比最高 |
+| 平衡场景 | GPT-4o / Claude Sonnet 4 | 能力强 |
+| 复杂推理 | Claude Opus 4 / GPT-4.5 | 最强能力 |
+| 编程任务 | Codex 5-4 / Claude Opus 4 | 编程专用 |
+| 长文档分析 | Gemini 3.1 Pro (2M) | 超长上下文 |
+| 国内业务 | DeepSeek-V3 / Kimi | 成本优势 |
+| 谷歌生态 | Gemini 3.1 Pro / Flash | 谷歌原生 |
 
 **检验清单：**
 - [x] 能口算：1000字中文 ≈ 1333 Token
-- [x] 能回答：GPT-4o 的 Context Window（128K）
+- [x] 能回答：主流模型的 Context Window
 - [x] 能解释：Temperature=0.7 vs 1.0 的区别
 - [x] 能实现：带 Streaming 的 LLM 调用
 - [x] 能根据任务选择合适的模型

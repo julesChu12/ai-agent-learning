@@ -3,6 +3,7 @@
 
 # LLM API 调用
 openai>=1.0.0
+anthropic>=0.20.0          # Claude SDK
 
 # Token 计算
 tiktoken>=0.5.0
@@ -10,6 +11,7 @@ tiktoken>=0.5.0
 # 可选：LangChain 相关（后续学习使用）
 # langchain>=0.1.0
 # langchain-openai>=0.0.5
+# langchain-anthropic>=0.1.0
 # langchain-community>=0.0.10
 
 # 向量数据库（后续学习使用）
