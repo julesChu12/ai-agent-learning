@@ -1,0 +1,23 @@
+# AI Agent 学习 - Python 环境依赖
+# 安装方式: pip install -r requirements.txt
+
+# LLM API 调用
+openai>=1.0.0
+
+# Token 计算
+tiktoken>=0.5.0
+
+# 可选：LangChain 相关（后续学习使用）
+# langchain>=0.1.0
+# langchain-openai>=0.0.5
+# langchain-community>=0.0.10
+
+# 向量数据库（后续学习使用）
+# chromadb>=0.4.0
+
+# HTTP 客户端
+httpx>=0.25.0
+httpcore>=1.0.0
+
+# 环境变量管理
+python-dotenv>=1.0.0
