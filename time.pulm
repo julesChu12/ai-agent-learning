@@ -1,0 +1,48 @@
+@startuml
+actor 用户
+participant 前端
+participant "Bms-GO服务" as Bms
+participant "信誉中心" as Credit
+participant "审批系统" as Approval
+participant "三方服务[phone|mail|face]" as ThirdPartyService  
+
+用户 -> 前端: 登录
+前端 -> Bms: 查询用户认证状态
+Bms -> Credit: 查询学生认证状态
+Credit --> Bms: 返回认证状态
+Bms --> 前端: 返回认证状态
+
+alt 已认证
+    前端 -> 用户: 弹出同步信息弹窗
+    用户 -> 前端: 选择同步信息
+    前端 -> Bms: 提交基础信息
+    Bms -> Bms: 校验数据合法性
+    Bms -> Credit: 获取passuid其他补充信息&二次校验
+    Credit --> Bms: 返回passuid 对应结果
+    Bms -> Bms: 补充信息，并进行状态流转
+    Bms --> 前端: 返回认证结果
+    前端 -> 用户: 展示认证结果
+else 审核中或未认证
+    前端 -> 用户: 进入历史的学生认证信息填写页面
+    用户 -> 前端: 填写表单信息
+    前端 -> Bms: 提交表单信息
+    Bms -> Bms: 校验信息是否合法
+    Bms --> 前端: 返回校验结果
+    alt 信息完整
+        Bms -> ThirdPartyService: 调用三方服务进行数据校验
+        ThirdPartyService --> Bms: 返回三方校验结果
+        Bms -> Bms: 生成审核记录
+        Bms -> Approval: 生成审批流
+        Approval --> Bms: 返回审批ID
+        Approval -> Approval: 审批流转
+        Bms --> 前端: 返回认证结果（审核中）
+        前端 -> 用户: 展示审核中状态
+        Approval -> Bms: 回调审批结果
+        Bms --> 前端: 更新认证状态
+        前端 -> 用户: 展示最终认证结果
+    else 信息不完整
+        Bms --> 前端: 返回错误信息（信息不完整）
+        前端 -> 用户: 展示错误信息
+    end
+end
+@enduml
